@@ -20,6 +20,8 @@ import com.github.frapontillo.pulse.crowd.data.entity.Message;
 import com.github.frapontillo.pulse.crowd.social.extraction.ExtractionParameters;
 import com.github.frapontillo.pulse.crowd.social.extraction.IReplyExtractor;
 import com.github.frapontillo.pulse.crowd.social.facebook.FacebookFactory;
+import com.github.frapontillo.pulse.spi.IPlugin;
+import com.github.frapontillo.pulse.spi.VoidConfig;
 import facebook4j.Comment;
 import facebook4j.FacebookException;
 import facebook4j.Reading;
@@ -67,5 +69,9 @@ public class FacebookReplyExtractor extends IReplyExtractor {
 
     @Override public String getName() {
         return PLUGIN_NAME;
+    }
+
+    @Override public IPlugin<Message, Message, VoidConfig> getInstance() {
+        return new FacebookReplyExtractor();
     }
 }

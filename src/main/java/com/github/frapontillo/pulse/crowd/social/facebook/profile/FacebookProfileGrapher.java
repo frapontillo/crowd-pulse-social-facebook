@@ -20,6 +20,8 @@ import com.github.frapontillo.pulse.crowd.data.entity.Profile;
 import com.github.frapontillo.pulse.crowd.social.facebook.FacebookFactory;
 import com.github.frapontillo.pulse.crowd.social.profile.IProfileGrapher;
 import com.github.frapontillo.pulse.crowd.social.profile.ProfileParameters;
+import com.github.frapontillo.pulse.spi.IPlugin;
+import com.github.frapontillo.pulse.spi.VoidConfig;
 import facebook4j.FacebookException;
 import facebook4j.Friend;
 import facebook4j.Reading;
@@ -65,5 +67,9 @@ public class FacebookProfileGrapher extends IProfileGrapher {
 
     @Override public String getName() {
         return PLUGIN_NAME;
+    }
+
+    @Override public IPlugin<Profile, Profile, VoidConfig> getInstance() {
+        return new FacebookProfileGrapher();
     }
 }

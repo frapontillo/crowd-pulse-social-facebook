@@ -20,6 +20,7 @@ import com.github.frapontillo.pulse.crowd.data.entity.Message;
 import com.github.frapontillo.pulse.crowd.social.exception.SocialException;
 import com.github.frapontillo.pulse.crowd.social.extraction.ExtractionParameters;
 import com.github.frapontillo.pulse.crowd.social.extraction.IExtractor;
+import com.github.frapontillo.pulse.spi.IPlugin;
 import com.github.frapontillo.pulse.util.PulseLogger;
 import org.apache.logging.log4j.Logger;
 import rx.Observable;
@@ -37,6 +38,10 @@ public class FacebookExtractor extends IExtractor {
 
     @Override public String getName() {
         return PLUGIN_NAME;
+    }
+
+    @Override public IPlugin<Void, Message, ExtractionParameters> getInstance() {
+        return new FacebookExtractor();
     }
 
     @Override public long getMaximumQueryParameters() {
